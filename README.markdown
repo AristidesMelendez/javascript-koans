@@ -1,3 +1,5 @@
+This project is a fork of user mrdavidlaing, I am not the author, I clone this project to practice and study JavaScript.
+
 # Javascript Koans - koans to learn Javascript (the good bits) #
 
 Based on Edgecase's fantastic 
