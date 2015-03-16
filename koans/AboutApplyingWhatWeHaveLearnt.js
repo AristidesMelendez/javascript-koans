@@ -118,8 +118,37 @@ describe("About Applying What We Have Learnt", function() {
   });
 */
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      fail();
 
+      var snd = 1;
+      var primes = [2,3,5,7,11,13,17,19];
+      var numbers = _.range(2, 21);
+      var MCM = {};
+      expect(numbers).toEqual([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+
+      _(numbers).map(function(x) {
+          if (x === 1 || x === 0)
+            return x;
+
+          for(var i = 0; i<primes.length; i += 1){
+              var power = 1
+              while (x % primes[i] === 0){
+                  MCM['' + primes[i]] = MCM['' + primes[i]] || 1;
+
+                  if(power > MCM['' + primes[i]]){
+                      MCM['' + primes[i]] = power;
+                  }
+                  x = x / primes[i];
+                  power++;
+              }
+          }
+      });
+
+      for (var i = 0; i<primes.length; i += 1){
+          if(MCM['' + primes[i]] !== undefined)
+            snd *= Math.pow(primes[i], MCM['' + primes[i]]);
+      }
+
+      expect(232792560).toBe(snd);
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
